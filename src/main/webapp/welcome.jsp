@@ -8,7 +8,7 @@
   Time: 9:53
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8"%>
 <html>
 <head>
     <title>Title</title>
@@ -50,11 +50,13 @@
                             <input type="text" value="<%=user.getId()%>" name="id">
                             <input type="submit" value="删除">
                         </form>
+
                     </td>
                 </tr>
             <%
                 }
         %>
+        <a href="login">更新</a>
     </table>
 </body>
 </html>

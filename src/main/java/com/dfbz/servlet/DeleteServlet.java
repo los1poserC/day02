@@ -14,8 +14,6 @@ public class DeleteServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=utf-8");
         int id= Integer.parseInt(request.getParameter("id"));
-
-        System.out.println(id);
         try {
             //连接数据库
             String url = "jdbc:mysql://127.0.0.1:3306/mydatabase";
@@ -26,16 +24,15 @@ public class DeleteServlet extends HttpServlet {
             String sql="delete from sys_user where id="+id+"";
             PreparedStatement prst = conn.prepareStatement(sql);
             prst.executeUpdate();
-            PrintWriter out=response.getWriter();
-            out.print("<html><head></head><body><h3>删除成功</h3><a href='login'>返回</a></body></html>");
-            out.write("true");
+//            PrintWriter out=response.getWriter();
+//            out.print("<html><head></head><body><h3>删除成功</h3><a href='login'>返回</a></body></html>");
 //            request.getRequestDispatcher("/welcome.jsp").forward(request, response);
 //            <input type='button' action='login' value='返回'>
+            request.getRequestDispatcher("login").forward(request, response);
         }catch (Exception e){
             e.printStackTrace();
         }
     }
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request,response);
     }
