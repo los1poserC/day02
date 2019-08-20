@@ -11,13 +11,10 @@ import java.sql.*;
 @WebServlet("/delete")
 public class DeleteServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request,response);
-    }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=utf-8");
-        Object id=  request.getAttribute("id");
+        int id= Integer.parseInt(request.getParameter("id"));
+
         System.out.println(id);
         try {
             //连接数据库
@@ -37,5 +34,9 @@ public class DeleteServlet extends HttpServlet {
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doPost(request,response);
     }
 }

@@ -19,6 +19,9 @@
             height: 50px;
             border: 1px solid #000;
         }
+        input[type="text"]{
+            display: none;
+        }
     </style>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
@@ -40,25 +43,18 @@
 
                 %>
                 <tr>
-                    <td class="load"><%=user.getId()%></td>
+                    <td><%=user.getId()%></td>
                     <td><%=user.getUsername()%></td>
-                    <td><a href="delete?id=<%=user.getId()%>">删除</a></td>
+                    <td>
+                        <form action="delete" method="post">
+                            <input type="text" value="<%=user.getId()%>" name="id">
+                            <input type="submit" value="删除">
+                        </form>
+                    </td>
                 </tr>
             <%
                 }
         %>
     </table>
 </body>
-<script>
-    function load(e) {
-        console.log(e.innerText);
-        var b=e.parentNode.parentNode;
-        console.log(b.innerText);
-        var c=b.children[0];
-        console.log(c);
-        var d=c.innerText;
-        console.log(d);
-
-    }
-</script>
 </html>
